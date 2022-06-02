@@ -8,7 +8,6 @@ API para controle de tarefas com sistema de login por usuário
 
 - Flask
 - SQLite ( db local )
-- JWT
 
 ## Como instalar?
 
@@ -24,20 +23,9 @@ API para controle de tarefas com sistema de login por usuário
 > Documentação para testes :D
 ## Autenticação
 
-**Cadastro de usuário**
+**Criar usuário**
 
-> [ POST ] http://144.126.213.60/auth/register
-
--> Exemplo de body
-```json
-{
-  "username": "alandev"
-}
-```
-
-**Autenticar usuário**
-
-> [ POST ] http://144.126.213.60/auth/login
+> [ POST ] http://BASE_URL/users
 
 -> Exemplo de body
 ```json
@@ -46,55 +34,24 @@ API para controle de tarefas com sistema de login por usuário
 }
 ```
 
--> Exemplo de resposta
-```json
-{
-  "token": "adiwjdiajida..."
-}
+**Editar usuário**
 
-```
-
-## Rotas autenticadas ( Gerenciar tarefas / Perfil do usuário)
-
-> Necessário passar token JWT de acesso. 
-
-**Puxar informações completa do usuário**
-
-> [ GET ] http://144.126.213.60/profile
-
-**Criar tarefa**
-
-> [ POST ] http://144.126.213.60/tasks
+> [ PUT ] http://BASE_URL/users/{user_id}
 
 -> Exemplo de body
 ```json
 {
-	"title": "title",
-	"description": "desc",
-	"status": "status"
+	"username": "new_username"
 }
 ```
 
-**Editar tarefa**
+**Deletar usuário**
 
-> [ PUT ] http://144.126.213.60/tasks/{task_id}
+> [ DELETE ] http://BASE_URL/users/{user_id}
 
--> Exemplo de body
-```json
-{
-	"title": "title",
-	"description": "desc",
-	"status": "status"
-}
-```
+**Listar usuários**
 
-**Deletar tarefa**
+> [ GET ] http://BASE_URL/users
 
-> [ DELETE ] http://144.126.213.60/tasks/{task_id}
-
-**Listar tarefas**
-
-> [ GET ] http://144.126.213.60/tasks
-
-**Consultar tarefa especifica**
-> [ GET ] http://144.126.213.60/tasks/{task_id}
+**Consultar usuário especifico**
+> [ GET ] http://BASE_URL/users/{user_id}
